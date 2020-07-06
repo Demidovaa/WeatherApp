@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		86E11C3024B11A5500131DCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E11C2F24B11A5500131DCD /* AppDelegate.swift */; };
-		86E11C3224B11A5500131DCD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E11C3124B11A5500131DCD /* SceneDelegate.swift */; };
 		86E11C3424B11A5500131DCD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E11C3324B11A5500131DCD /* ViewController.swift */; };
 		86E11C3724B11A5500131DCD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86E11C3524B11A5500131DCD /* Main.storyboard */; };
 		86E11C3924B11A5900131DCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86E11C3824B11A5900131DCD /* Assets.xcassets */; };
@@ -18,7 +17,6 @@
 /* Begin PBXFileReference section */
 		86E11C2C24B11A5500131DCD /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86E11C2F24B11A5500131DCD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		86E11C3124B11A5500131DCD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		86E11C3324B11A5500131DCD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		86E11C3624B11A5500131DCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		86E11C3824B11A5900131DCD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,7 +55,6 @@
 			isa = PBXGroup;
 			children = (
 				86E11C2F24B11A5500131DCD /* AppDelegate.swift */,
-				86E11C3124B11A5500131DCD /* SceneDelegate.swift */,
 				86E11C3324B11A5500131DCD /* ViewController.swift */,
 				86E11C3524B11A5500131DCD /* Main.storyboard */,
 				86E11C3824B11A5900131DCD /* Assets.xcassets */,
@@ -140,7 +137,6 @@
 			files = (
 				86E11C3424B11A5500131DCD /* ViewController.swift in Sources */,
 				86E11C3024B11A5500131DCD /* AppDelegate.swift in Sources */,
-				86E11C3224B11A5500131DCD /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,7 +290,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.demidova.WeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -312,7 +308,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.demidova.WeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
