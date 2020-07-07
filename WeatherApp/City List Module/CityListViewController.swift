@@ -10,7 +10,7 @@ import UIKit
 
 class CityListViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +25,10 @@ extension CityListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
+      guard let cell = tableView.dequeueReusableCell(
+          withIdentifier: "CityTableViewCell", for: indexPath)
+          as? CityTableViewCell else { return UITableViewCell() }
+      
       return cell
     }
     
