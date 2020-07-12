@@ -10,6 +10,7 @@ import CoreLocation
 
 class GeolocationService: NSObject, CLLocationManagerDelegate {
     private let locationManager = CLLocationManager()
+    var coords: CLLocationCoordinate2D = CLLocationCoordinate2D()
     
     override init() {
         super.init()
@@ -23,14 +24,13 @@ class GeolocationService: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        print(manager.location)
-        
-        var currentLocation = locations.last!
+        let currentLocation = locations.last!
         if currentLocation.horizontalAccuracy > 0 {
             locationManager.stopUpdatingLocation()
             
-            let coords = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude)
+            coords = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude,
+                                                    currentLocation.coordinate.longitude)
+            print(coords)
         }
     }
     
