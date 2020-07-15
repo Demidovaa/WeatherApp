@@ -12,10 +12,13 @@ import CoreLocation
 class CityListViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
+    private var presenter: CityListPresenter?
     private let locationService = GeolocationService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter = CityListPresenter()
+
         tableView.delegate = self
         tableView.dataSource = self
         //MARK: Location
