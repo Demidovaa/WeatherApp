@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,9 @@
 		86CA1BBE24B515B100678529 /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA1BBD24B515B100678529 /* CityTableViewCell.swift */; };
 		86CA1BC024B51AC200678529 /* GeolocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA1BBF24B51AC200678529 /* GeolocationService.swift */; };
 		86CA1BC424B787AA00678529 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CA1BC324B787AA00678529 /* CoreLocation.framework */; };
+		86CFB8AB24D0B5F6001BAD1C /* APIWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CFB8AA24D0B5F6001BAD1C /* APIWeather.swift */; };
+		86CFB8B024D0B96B001BAD1C /* MoyaCacheable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CFB8AF24D0B96B001BAD1C /* MoyaCacheable.swift */; };
+		86CFB8B224D0B980001BAD1C /* MoyaCacheablePlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CFB8B124D0B980001BAD1C /* MoyaCacheablePlugin.swift */; };
 		86E11C3024B11A5500131DCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E11C2F24B11A5500131DCD /* AppDelegate.swift */; };
 		86E11C3724B11A5500131DCD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86E11C3524B11A5500131DCD /* Main.storyboard */; };
 		86E11C3924B11A5900131DCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86E11C3824B11A5900131DCD /* Assets.xcassets */; };
@@ -28,6 +31,9 @@
 		86CA1BBD24B515B100678529 /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
 		86CA1BBF24B51AC200678529 /* GeolocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeolocationService.swift; sourceTree = "<group>"; };
 		86CA1BC324B787AA00678529 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		86CFB8AA24D0B5F6001BAD1C /* APIWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIWeather.swift; sourceTree = "<group>"; };
+		86CFB8AF24D0B96B001BAD1C /* MoyaCacheable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaCacheable.swift; sourceTree = "<group>"; };
+		86CFB8B124D0B980001BAD1C /* MoyaCacheablePlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaCacheablePlugin.swift; sourceTree = "<group>"; };
 		86E11C2C24B11A5500131DCD /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86E11C2F24B11A5500131DCD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86E11C3624B11A5500131DCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -57,7 +63,6 @@
 				B1656AA869FD7CF86BE2A274 /* Pods-WeatherApp.debug.xcconfig */,
 				392E37D9600724C8F33E0A83 /* Pods-WeatherApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -86,6 +91,32 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		86CFB8AC24D0B5FA001BAD1C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				86CFB8AE24D0B927001BAD1C /* Cache */,
+				86CFB8AD24D0B617001BAD1C /* API */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		86CFB8AD24D0B617001BAD1C /* API */ = {
+			isa = PBXGroup;
+			children = (
+				86CFB8AA24D0B5F6001BAD1C /* APIWeather.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		86CFB8AE24D0B927001BAD1C /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				86CFB8AF24D0B96B001BAD1C /* MoyaCacheable.swift */,
+				86CFB8B124D0B980001BAD1C /* MoyaCacheablePlugin.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
 		86E11C2324B11A5500131DCD = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +142,7 @@
 				86E11C3524B11A5500131DCD /* Main.storyboard */,
 				8687B3B724BF5F350014324D /* Models */,
 				86E11C4524B4F8F000131DCD /* City List Module */,
+				86CFB8AC24D0B5FA001BAD1C /* Network */,
 				86CA1BC124B51AC600678529 /* Services */,
 				86E11C3824B11A5900131DCD /* Assets.xcassets */,
 				86E11C3A24B11A5900131DCD /* LaunchScreen.storyboard */,
@@ -248,6 +280,9 @@
 				864497C324BF5B2600FF6305 /* CityListPresenter.swift in Sources */,
 				86CA1BBE24B515B100678529 /* CityTableViewCell.swift in Sources */,
 				86E11C4424B4F8DF00131DCD /* CityListViewController.swift in Sources */,
+				86CFB8B224D0B980001BAD1C /* MoyaCacheablePlugin.swift in Sources */,
+				86CFB8B024D0B96B001BAD1C /* MoyaCacheable.swift in Sources */,
+				86CFB8AB24D0B5F6001BAD1C /* APIWeather.swift in Sources */,
 				8687B3B624BF5F160014324D /* WeatherModel.swift in Sources */,
 				86E11C3024B11A5500131DCD /* AppDelegate.swift in Sources */,
 			);
