@@ -7,5 +7,6 @@ target 'WeatherApp' do
 
   # Pods for WeatherApp
   pod 'Moya'
+  pod 'RealmSwift'
 
 end
