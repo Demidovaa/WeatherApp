@@ -10,5 +10,7 @@ import UIKit
 
 class CityTableViewCell: UITableViewCell {
     @IBOutlet private weak var cityLabel: UILabel!
+    @IBOutlet private weak var tempLabel: UILabel!
+    
     
 }

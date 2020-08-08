@@ -22,11 +22,11 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityTableViewCell" rowHeight="80" id="2FO-GJ-JvC" customClass="CityTableViewCell" customModule="WeatherApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="414" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2FO-GJ-JvC" id="aNV-6B-FEs">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="CityTableViewCell" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2FO-GJ-JvC" id="aNV-6B-FEs">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yo7-wQ-KmJ">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yo7-wQ-KmJ">
                                                     <rect key="frame" x="20" y="11" width="143" height="58"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="143" id="t4T-cY-fnB"/>
@@ -35,15 +35,28 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9I-wh-far">
+                                                    <rect key="frame" x="336" y="11" width="58" height="58"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="58" id="hz8-Xf-YOr"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="i9I-wh-far" firstAttribute="top" secondItem="aNV-6B-FEs" secondAttribute="topMargin" id="606-aI-Q2G"/>
                                                 <constraint firstItem="Yo7-wQ-KmJ" firstAttribute="top" secondItem="aNV-6B-FEs" secondAttribute="topMargin" id="9O7-i0-6U8"/>
                                                 <constraint firstItem="Yo7-wQ-KmJ" firstAttribute="bottom" secondItem="aNV-6B-FEs" secondAttribute="bottomMargin" id="OB2-5p-zPl"/>
+                                                <constraint firstItem="i9I-wh-far" firstAttribute="bottom" secondItem="aNV-6B-FEs" secondAttribute="bottomMargin" id="Qd0-Lz-0n6"/>
+                                                <constraint firstItem="i9I-wh-far" firstAttribute="trailing" secondItem="aNV-6B-FEs" secondAttribute="trailingMargin" id="U83-Ko-Rzw"/>
                                                 <constraint firstItem="Yo7-wQ-KmJ" firstAttribute="leading" secondItem="aNV-6B-FEs" secondAttribute="leadingMargin" id="nwF-WC-ckN"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="cityLabel" destination="Yo7-wQ-KmJ" id="gWd-eu-pH3"/>
+                                            <outlet property="tempLabel" destination="i9I-wh-far" id="vSB-aS-eq8"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

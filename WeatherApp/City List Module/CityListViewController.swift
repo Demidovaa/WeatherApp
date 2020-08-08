@@ -15,6 +15,8 @@ class CityListViewController: UIViewController {
     private var presenter: CityListPresenter?
     private let locationService = GeolocationService()
     
+    private var cityArray = ["Nizhny Novgorod", "Moscow"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = CityListPresenter()
@@ -29,14 +31,17 @@ class CityListViewController: UIViewController {
 //MARK: TableView
 extension CityListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       guard let cell = tableView.dequeueReusableCell(
           withIdentifier: "CityTableViewCell", for: indexPath)
           as? CityTableViewCell else { return UITableViewCell() }
-      
+        //UPDATE!
+        let item = cityArray[indexPath.row]
+        cell.textLabel?.text = item
+        
       return cell
     }
     
