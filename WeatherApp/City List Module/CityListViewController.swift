@@ -20,7 +20,7 @@ class CityListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = CityListPresenter()
-
+        
         tableView.delegate = self
         tableView.dataSource = self
         //MARK: Location
@@ -31,18 +31,16 @@ class CityListViewController: UIViewController {
 //MARK: TableView
 extension CityListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return cityArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      guard let cell = tableView.dequeueReusableCell(
-          withIdentifier: "CityTableViewCell", for: indexPath)
-          as? CityTableViewCell else { return UITableViewCell() }
-        //UPDATE!
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: "CityTableViewCell", for: indexPath)
+            as? CityTableViewCell else { return UITableViewCell() }
         let item = cityArray[indexPath.row]
-        cell.textLabel?.text = item
-        
-      return cell
+        cell.configure(name: item, temp: 21)
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -51,5 +49,18 @@ extension CityListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+    }
+    
+    //MARK: Delete Cell
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        true
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            cityArray.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
     }
 }
