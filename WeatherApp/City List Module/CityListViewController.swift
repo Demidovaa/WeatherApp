@@ -12,6 +12,7 @@ import CoreLocation
 class CityListViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
+    
     private var presenter: CityListPresenter?
     private let locationService = GeolocationService()
     
