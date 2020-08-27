@@ -9,6 +9,6 @@
 import Foundation
 
 protocol MoyaCacheable {
-  typealias MoyaCacheablePolicy = URLRequest.CachePolicy
-  var cachePolicy: MoyaCacheablePolicy { get }
+    typealias MoyaCacheablePolicy = URLRequest.CachePolicy
+    var cachePolicy: MoyaCacheablePolicy { get }
 }

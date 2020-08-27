@@ -2,11 +2,12 @@
 //  WeatherSearchAPI.swift
 //  WeatherApp
 //
-//  Created by Anastasia Demidova on 28.07.2020.
+//  Created by Anastasia Demidova on 29.07.2020.
 //  Copyright © 2020 AnastasiaDemidova. All rights reserved.
 //
 
 import Foundation
+
 import Moya
 
 enum WeatherSearchAPI {
@@ -53,7 +54,8 @@ extension WeatherSearchAPI: TargetType {
     }
     
     var headers: [String : String]? {
-        return ["Content-type": "application/json"]
+        return ["Content-type": "application/json",
+                "Accept": "application/json"]
     }
 }
 
