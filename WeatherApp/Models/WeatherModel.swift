@@ -7,7 +7,44 @@
 //
 
 import Foundation
+import RealmSwift
 
-class WeatherModel {
-    
+class WeatherModel: Object {
+    let temperature = RealmOptional<Double>()
+    let pressure = RealmOptional<Int>()
+    let humidity = RealmOptional<Int>()
+    @objc dynamic var date: Date = Date()
+    @objc dynamic var conditionName: String = ""
+    @objc dynamic var conditionDescription: String = ""
+
+    convenience init(with response: WeatherResponse) {
+        self.init()
+        self.temperature.value = response.main.temp
+        self.pressure.value = response.main.pressure
+        self.humidity.value = response.main.humidity
+        //self.date = Date.dateFromString(string: response.date) ?? Date()
+        self.conditionName = response.weather.first?.main ?? ""
+        self.conditionDescription = response.weather.first?.description ?? ""
+    }
+}
+
+class WeatherCity: Object {
+    @objc dynamic var name: String = ""
+    @objc dynamic var currentWeather: WeatherModel?
+    dynamic var forecast = List<WeatherModel>()
+
+    override class func primaryKey() -> String? {
+        return "name"
+    }
+
+    convenience init(with response: WeatherResponse) {
+        self.init()
+        self.name = response.name ?? ""
+        self.currentWeather = WeatherModel(with: response)
+    }
+
+    convenience init(name: String) {
+        self.init()
+        self.name = name
+    }
 }
