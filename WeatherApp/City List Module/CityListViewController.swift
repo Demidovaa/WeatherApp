@@ -67,13 +67,13 @@ extension CityListViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             let item = location[indexPath.row]
             cell.configure(name: item, temp: 20)
-            cell.setTextColor(cityColor: .white, tempColor: .white)
+            cell.setTextColor(color: .white)
             cell.setGradient(firstColor: .blue, secondColor: .white)
         case 1:
             let items = cityArray[indexPath.row]
             cell.configure(name: items, temp: 21)
-            cell.setTextColor(cityColor: .black, tempColor: .black)
-            cell.setGradient() //test color
+            cell.setTextColor(color: .black)
+            cell.setGradient() 
         default:
             fatalError("NoCell")
         }

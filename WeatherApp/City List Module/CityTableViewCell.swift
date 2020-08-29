@@ -9,6 +9,7 @@
 import UIKit
 
 class CityTableViewCell: UITableViewCell {
+    @IBOutlet private weak var timeLabel: UILabel!
     @IBOutlet private weak var cityLabel: UILabel!
     @IBOutlet private weak var tempLabel: UILabel!
     
@@ -18,8 +19,9 @@ class CityTableViewCell: UITableViewCell {
         tempLabel.text = "\(temp ?? 0)" + " °C"
     }
     
-    func setTextColor(cityColor: UIColor, tempColor: UIColor) {
-        cityLabel.textColor = cityColor
-        tempLabel?.textColor = tempColor
+    func setTextColor(color: UIColor) {
+        timeLabel.textColor = color
+        cityLabel.textColor = color
+        tempLabel.textColor = color
     }
 }
