@@ -17,4 +17,9 @@ class CityTableViewCell: UITableViewCell {
         cityLabel.text = name
         tempLabel.text = "\(temp ?? 0)" + " °C"
     }
+    
+    func setTextColor(cityColor: UIColor, tempColor: UIColor) {
+        cityLabel.textColor = cityColor
+        tempLabel?.textColor = tempColor
+    }
 }

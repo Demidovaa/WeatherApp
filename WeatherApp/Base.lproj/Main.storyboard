@@ -26,20 +26,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nizhny Novgorod" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yo7-wQ-KmJ">
-                                                    <rect key="frame" x="20" y="11" width="143" height="58"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="143" id="t4T-cY-fnB"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="20" y="11" width="155" height="58"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21 °C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9I-wh-far">
-                                                    <rect key="frame" x="296" y="11" width="58" height="58"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="58" id="hz8-Xf-YOr"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="303" y="11" width="51" height="58"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -50,6 +44,7 @@
                                                 <constraint firstItem="Yo7-wQ-KmJ" firstAttribute="bottom" secondItem="aNV-6B-FEs" secondAttribute="bottomMargin" id="OB2-5p-zPl"/>
                                                 <constraint firstItem="i9I-wh-far" firstAttribute="bottom" secondItem="aNV-6B-FEs" secondAttribute="bottomMargin" id="Qd0-Lz-0n6"/>
                                                 <constraint firstItem="i9I-wh-far" firstAttribute="trailing" secondItem="aNV-6B-FEs" secondAttribute="trailingMargin" id="U83-Ko-Rzw"/>
+                                                <constraint firstItem="i9I-wh-far" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Yo7-wQ-KmJ" secondAttribute="trailing" constant="8" symbolic="YES" id="WKK-dT-liP"/>
                                                 <constraint firstItem="Yo7-wQ-KmJ" firstAttribute="leading" secondItem="aNV-6B-FEs" secondAttribute="leadingMargin" id="nwF-WC-ckN"/>
                                             </constraints>
                                         </tableViewCellContentView>

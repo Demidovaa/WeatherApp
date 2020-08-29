@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension UITableViewCell {
-    func setGradient(firstColor: UIColor, secondColor: UIColor) {
+    func setGradient(firstColor: UIColor = .white, secondColor: UIColor = .white) {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = self.bounds
         gradientLayer.colors = [firstColor.cgColor, secondColor.cgColor]
