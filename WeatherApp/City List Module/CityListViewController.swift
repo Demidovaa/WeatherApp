@@ -31,6 +31,13 @@ class CityListViewController: UIViewController {
         locationService.start()
         
     }
+    
+    func gradient() {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.view.bounds
+        gradientLayer.colors = [UIColor.yellow.cgColor, UIColor.white.cgColor]
+        self.view.layer.insertSublayer(gradientLayer, at: 0)
+    }
 }
 
 //MARK: TableView
@@ -60,10 +67,11 @@ extension CityListViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             let item = location[indexPath.row]
             cell.configure(name: item, temp: 20)
+            cell.setGradient(firstColor: .blue, secondColor: .white)
         case 1:
             let items = cityArray[indexPath.row]
             cell.configure(name: items, temp: 21)
-            return cell
+            cell.setGradient(firstColor: .purple, secondColor: .white) //test color
         default:
             fatalError("NoCell")
         }
