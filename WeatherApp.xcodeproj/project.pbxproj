@@ -174,9 +174,9 @@
 		86E11C4524B4F8F000131DCD /* City List Module */ = {
 			isa = PBXGroup;
 			children = (
+				86CA1BBD24B515B100678529 /* CityTableViewCell.swift */,
 				86E11C4324B4F8DF00131DCD /* CityListViewController.swift */,
 				864497C224BF5B2600FF6305 /* CityListPresenter.swift */,
-				86CA1BBD24B515B100678529 /* CityTableViewCell.swift */,
 			);
 			path = "City List Module";
 			sourceTree = "<group>";
