@@ -40,6 +40,15 @@ class CityListViewController: UIViewController {
         locationService.start()
         
     }
+    
+    @IBAction func addCityButton(_ sender: Any) {
+        let alert = UIAlertController(title: "Add City", message: nil, preferredStyle: .alert)
+        alert.addTextField { textField in
+            textField.becomeFirstResponder()
+        }
+        present(alert,animated: true)
+    }
+
 }
 
 //MARK: TableView
