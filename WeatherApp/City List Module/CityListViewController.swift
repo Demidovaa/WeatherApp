@@ -19,7 +19,16 @@ class CityListViewController: UIViewController {
     
     final let headerSections = ["Current", "Сities"]
     private var location = ["Nizhny Novgorod"]
-    private var cityArray = ["Nizhny Novgorod", "Moscow"]
+    private var cityArray = ["Nizhny Novgorod", "Moscow"] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    private enum Color {
+        static let lightBlue = "E1F5FE"
+        static let customBlue = "039BE5"
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,13 +39,6 @@ class CityListViewController: UIViewController {
         //MARK: Location
         locationService.start()
         
-    }
-    
-    func gradient() {
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = self.view.bounds
-        gradientLayer.colors = [UIColor.yellow.cgColor, UIColor.white.cgColor]
-        self.view.layer.insertSublayer(gradientLayer, at: 0)
     }
 }
 
@@ -68,7 +70,8 @@ extension CityListViewController: UITableViewDelegate, UITableViewDataSource {
             let item = location[indexPath.row]
             cell.configure(name: item, temp: 20)
             cell.setTextColor(color: .white)
-            cell.setGradient(firstColor: .blue, secondColor: .white)
+            cell.setGradient(firstColor: UIColor(named: Color.customBlue) ?? UIColor.gray,
+                             secondColor: UIColor(named: Color.lightBlue) ?? UIColor.white)
         case 1:
             let items = cityArray[indexPath.row]
             cell.configure(name: items, temp: 21)
@@ -83,8 +86,8 @@ extension CityListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0: return 1 //use one cell for current geolocaton
-        case 1: return 2
+        case 0: return location.count //use one cell for current geolocaton
+        case 1: return cityArray.count
         default:
             fatalError("NoRows")
         }
@@ -92,6 +95,7 @@ extension CityListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "ForecastViewController", sender: nil)
     }
     
     //MARK: Delete Cell
@@ -101,9 +105,13 @@ extension CityListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
                    forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            cityArray.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+        if (editingStyle == .delete) {
+            if (indexPath.section) == 0 {
+                location.removeAll()
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            } else if (indexPath.section) == 1  {
+                cityArray.remove(at: indexPath.row)
+            }
         }
     }
 }
