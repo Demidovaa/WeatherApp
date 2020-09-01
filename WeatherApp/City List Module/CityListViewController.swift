@@ -30,6 +30,15 @@ class CityListViewController: UIViewController {
         static let customBlue = "039BE5"
     }
     
+    private enum AlertConstant {
+        static let addCity = "Add city"
+        static let search = "Search"
+        static let searchMessage = "Enter city name"
+        static let errorSearch = "Not found"
+        static let errorMessage = "Try again!"
+        static let cancel = "Cancel"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = CityListPresenter()
@@ -42,13 +51,33 @@ class CityListViewController: UIViewController {
     }
     
     @IBAction func addCityButton(_ sender: Any) {
-        let alert = UIAlertController(title: "Add City", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: AlertConstant.addCity,
+                                      message: AlertConstant.searchMessage,
+                                      preferredStyle: .alert)
+        
         alert.addTextField { textField in
             textField.becomeFirstResponder()
+            alert.view.tintColor = UIColor(named: Color.customBlue)
         }
-        present(alert,animated: true)
+        
+        alert.addAction(UIAlertAction(title: AlertConstant.search, style: .default, handler: { (alert) in
+            self.printErrorSearch() //test
+            print("ok")
+        }))
+        
+        present(alert, animated: true)
+        
     }
-
+    
+    private func printErrorSearch() {
+        let alert = UIAlertController(title: AlertConstant.errorSearch,
+                                      message: AlertConstant.errorMessage,
+                                      preferredStyle: .alert)
+        
+        alert.view.tintColor = UIColor(named: Color.customBlue)
+        alert.addAction(UIAlertAction(title: AlertConstant.cancel, style: .cancel))
+        present(alert, animated: true)
+    }
 }
 
 //MARK: TableView
