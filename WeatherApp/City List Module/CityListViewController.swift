@@ -48,6 +48,8 @@ class CityListViewController: UIViewController {
         //MARK: Location
         locationService.start()
         
+        presenter?.getData(for: location[0]) //test
+        
     }
     
     @IBAction func addCityButton(_ sender: Any) {
