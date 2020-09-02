@@ -11,7 +11,8 @@ import CoreLocation
 
 class CityListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
-    
+    @IBOutlet private weak var spinner: UIActivityIndicatorView!
+
     var city: WeatherCity?
     
     private var presenter: CityListPresenter?
@@ -47,10 +48,11 @@ class CityListViewController: UIViewController {
         tableView.dataSource = self
         //MARK: Location
         locationService.start()
-        
+
     }
     
     @IBAction func addCityButton(_ sender: Any) {
+        spinner.startAnimating()
         let alert = UIAlertController(title: AlertConstant.addCity,
                                       message: AlertConstant.searchMessage,
                                       preferredStyle: .alert)
@@ -70,6 +72,7 @@ class CityListViewController: UIViewController {
                     }
                 })
             }
+            self?.spinner.stopAnimating()
         }))
         present(alert, animated: true)
     }
