@@ -48,8 +48,6 @@ class CityListViewController: UIViewController {
         //MARK: Location
         locationService.start()
         
-        presenter?.getData(for: location[0]) //test
-        
     }
     
     @IBAction func addCityButton(_ sender: Any) {
@@ -62,13 +60,18 @@ class CityListViewController: UIViewController {
             alert.view.tintColor = UIColor(named: Color.customBlue)
         }
         
-        alert.addAction(UIAlertAction(title: AlertConstant.search, style: .default, handler: { (alert) in
-            self.printErrorSearch() //test
-            print("ok")
+        alert.addAction(UIAlertAction(title: AlertConstant.search, style: .default, handler: { [weak self, alert] _ in
+            if let textFields = alert.textFields,
+                let textField = textFields.first,
+                let text = textField.text {
+                self?.presenter?.getData(for: text, completion: { (success) in
+                    if !success {
+                        self?.printErrorSearch()
+                    }
+                })
+            }
         }))
-        
         present(alert, animated: true)
-        
     }
     
     private func printErrorSearch() {
@@ -77,7 +80,8 @@ class CityListViewController: UIViewController {
                                       preferredStyle: .alert)
         
         alert.view.tintColor = UIColor(named: Color.customBlue)
-        alert.addAction(UIAlertAction(title: AlertConstant.cancel, style: .cancel))
+        alert.addAction(UIAlertAction(title: AlertConstant.cancel,
+                                      style: .cancel))
         present(alert, animated: true)
     }
 }

@@ -9,7 +9,7 @@
 import Foundation
 
 protocol CityListPresenterProtocol {
-    func getData(for cityName: String)
+    func getData(for cityName: String, completion: ((_ success: Bool) -> ())?)
     var weather: [WeatherCity]? { get }
 }
 
@@ -17,7 +17,7 @@ class CityListPresenter: CityListPresenterProtocol {
     private let networkService = NetworkService()
     var weather: [WeatherCity]?
     
-    func getData(for cityName: String) {
+    func getData(for cityName: String, completion: ((_ success: Bool) -> ())?) {
         networkService.getCurrentWeather(for: cityName) { [weak self] response in
             guard let self = self else { return }
             if let response = response {
@@ -27,6 +27,7 @@ class CityListPresenter: CityListPresenterProtocol {
                 }
                 print(city)
             }
+            completion?(response != nil)
         }
     }
 }
