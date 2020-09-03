@@ -67,7 +67,11 @@
                                 </prototypes>
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="bhb-B4-LHS">
-                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                                <rect key="frame" x="157" y="398" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="GYZ-q2-6hy"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="hqc-8T-u5I"/>
+                                </constraints>
                                 <color key="color" name="039BE5"/>
                             </activityIndicatorView>
                         </subviews>
@@ -77,9 +81,11 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cUc-Rh-r55" secondAttribute="trailing" id="6nH-a4-1RG"/>
                             <constraint firstItem="bhb-B4-LHS" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="8Na-oO-hx4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cUc-Rh-r55" secondAttribute="bottom" id="MRO-Z2-Xi9"/>
+                            <constraint firstItem="bhb-B4-LHS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="S3B-Cx-GRH"/>
                             <constraint firstItem="bhb-B4-LHS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="c3t-nU-paq"/>
                             <constraint firstItem="cUc-Rh-r55" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="oSe-3b-yfC"/>
                             <constraint firstItem="cUc-Rh-r55" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="sCs-Oh-D78"/>
+                            <constraint firstItem="bhb-B4-LHS" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="xv7-x9-1lQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

@@ -13,8 +13,6 @@ class CityListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var spinner: UIActivityIndicatorView!
 
-    var city: WeatherCity?
-    
     private var presenter: CityListPresenter?
     private let locationService = GeolocationService()
     
@@ -46,6 +44,8 @@ class CityListViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        spinner.settingView(backColor: UIColor(named: Color.lightBlue)!,
+                            spinnerColor: UIColor(named: Color.customBlue)!)
         //MARK: Location
         locationService.start()
 
