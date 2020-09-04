@@ -12,7 +12,7 @@ import CoreLocation
 class CityListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var spinner: UIActivityIndicatorView!
-
+    
     private var presenter: CityListPresenter?
     private let locationService = GeolocationService()
     
@@ -48,7 +48,7 @@ class CityListViewController: UIViewController {
                             spinnerColor: UIColor(named: Color.customBlue)!)
         //MARK: Location
         locationService.start()
-
+        
     }
     
     @IBAction func addCityButton(_ sender: Any) {
@@ -67,7 +67,7 @@ class CityListViewController: UIViewController {
                 let textField = textFields.first,
                 let text = textField.text {
                 self?.presenter?.getData(for: text, completion: { (success) in
-                    if !success {
+                    if !success && !text.isEmpty {
                         self?.printErrorSearch()
                     }
                 })
