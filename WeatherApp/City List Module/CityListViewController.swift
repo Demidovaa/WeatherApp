@@ -133,7 +133,7 @@ extension CityListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0: return location.count //use one cell for current geolocaton
+        case 0: return 1 //use one cell for current geolocaton
         case 1: return cityArray.count
         default:
             fatalError("NoRows")

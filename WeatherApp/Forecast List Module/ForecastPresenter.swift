@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+protocol ForecastPresenterProtocol {
+    
+}
+
+class ForecastPresenter: ForecastPresenterProtocol {
+    
+}

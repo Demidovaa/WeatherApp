@@ -14,6 +14,8 @@
 		863B47AD24DF56D600D594F7 /* ForecastPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863B47AC24DF56D600D594F7 /* ForecastPresenter.swift */; };
 		864497C324BF5B2600FF6305 /* CityListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864497C224BF5B2600FF6305 /* CityListPresenter.swift */; };
 		8687B3B624BF5F160014324D /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8687B3B524BF5F160014324D /* WeatherModel.swift */; };
+		8691DCC62502C329005DB208 /* ForecastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8691DCC52502C329005DB208 /* ForecastCollectionViewCell.swift */; };
+		8691DCC82502C653005DB208 /* ForecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8691DCC72502C653005DB208 /* ForecastTableViewCell.swift */; };
 		86B254A1250100D40080238E /* UIActivityIndicatorView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B254A0250100D40080238E /* UIActivityIndicatorView+Extension.swift */; };
 		86CA1BBE24B515B100678529 /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA1BBD24B515B100678529 /* CityTableViewCell.swift */; };
 		86CA1BC024B51AC200678529 /* GeolocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA1BBF24B51AC200678529 /* GeolocationService.swift */; };
@@ -39,6 +41,8 @@
 		863B47AC24DF56D600D594F7 /* ForecastPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastPresenter.swift; sourceTree = "<group>"; };
 		864497C224BF5B2600FF6305 /* CityListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListPresenter.swift; sourceTree = "<group>"; };
 		8687B3B524BF5F160014324D /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		8691DCC52502C329005DB208 /* ForecastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCollectionViewCell.swift; sourceTree = "<group>"; };
+		8691DCC72502C653005DB208 /* ForecastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastTableViewCell.swift; sourceTree = "<group>"; };
 		86B254A0250100D40080238E /* UIActivityIndicatorView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicatorView+Extension.swift"; sourceTree = "<group>"; };
 		86CA1BBD24B515B100678529 /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
 		86CA1BBF24B51AC200678529 /* GeolocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeolocationService.swift; sourceTree = "<group>"; };
@@ -92,6 +96,8 @@
 			children = (
 				863B47A924DF568800D594F7 /* ForecastViewController.swift */,
 				863B47AC24DF56D600D594F7 /* ForecastPresenter.swift */,
+				8691DCC52502C329005DB208 /* ForecastCollectionViewCell.swift */,
+				8691DCC72502C653005DB208 /* ForecastTableViewCell.swift */,
 			);
 			path = "Forecast List Module";
 			sourceTree = "<group>";
@@ -312,6 +318,7 @@
 			files = (
 				86CA1BC024B51AC200678529 /* GeolocationService.swift in Sources */,
 				86B254A1250100D40080238E /* UIActivityIndicatorView+Extension.swift in Sources */,
+				8691DCC62502C329005DB208 /* ForecastCollectionViewCell.swift in Sources */,
 				8615CA4524FAEC3100531138 /* UITableViewCell+Extension.swift in Sources */,
 				86CFB8B424D1F4BF001BAD1C /* WeatherSearchAPI.swift in Sources */,
 				864497C324BF5B2600FF6305 /* CityListPresenter.swift in Sources */,
@@ -319,6 +326,7 @@
 				86E11C4424B4F8DF00131DCD /* CityListViewController.swift in Sources */,
 				861022A424F7118900950050 /* WeatherResponse.swift in Sources */,
 				863B47AD24DF56D600D594F7 /* ForecastPresenter.swift in Sources */,
+				8691DCC82502C653005DB208 /* ForecastTableViewCell.swift in Sources */,
 				86CFB8B224D0B980001BAD1C /* MoyaCacheablePlugin.swift in Sources */,
 				86CFB8B024D0B96B001BAD1C /* MoyaCacheable.swift in Sources */,
 				8687B3B624BF5F160014324D /* WeatherModel.swift in Sources */,
