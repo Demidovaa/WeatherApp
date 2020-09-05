@@ -9,18 +9,24 @@
 import UIKit
 
 class ForecastViewController: UIViewController {
-    @IBOutlet weak var forecastView: UIView!
-    @IBOutlet weak var forecastCollectionView: UICollectionView!
+    @IBOutlet private weak var forecastView: UIView!
+    @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
         forecastView.layer.cornerRadius = 40
     }
 }
 
 extension ForecastViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -28,6 +34,7 @@ extension ForecastViewController: UICollectionViewDelegate, UICollectionViewData
         withReuseIdentifier: "ForecastCollectionViewCell",
         for: indexPath) as? ForecastCollectionViewCell else { return UICollectionViewCell() }
         
+        cell.configure(time: "9:41", temp: "21")
         return cell
     }
 }
@@ -40,7 +47,7 @@ extension ForecastViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
         withIdentifier: "ForecastTableViewCell", for: indexPath)
-        as? CityTableViewCell else { return UITableViewCell() }
+        as? ForecastTableViewCell else { return UITableViewCell() }
         
         return cell
     }

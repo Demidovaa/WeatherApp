@@ -9,6 +9,12 @@
 import UIKit
 
 class ForecastCollectionViewCell: UICollectionViewCell {
+    @IBOutlet private weak var timeLabel: UILabel!
+    @IBOutlet private weak var weatherImage: UIImageView!
+    @IBOutlet private weak var tempLabel: UILabel!
     
-    
+    func configure(time: String, temp: String) {
+        timeLabel.text = time
+        tempLabel.text = temp
+    }
 }
