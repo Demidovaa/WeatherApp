@@ -10,20 +10,20 @@ import Foundation
 
 protocol CityListPresenterProtocol {
     func getData(for cityName: String, completion: ((_ success: Bool) -> ())?)
-    var weather: [WeatherCity]? { get }
+    var weather: Property<[WeatherCity]?> { get }
 }
 
 class CityListPresenter: CityListPresenterProtocol {
     private let networkService = NetworkService()
-    var weather: [WeatherCity]?
+    var weather = Property<[WeatherCity]?>([])
     
     func getData(for cityName: String, completion: ((_ success: Bool) -> ())?) {
         networkService.getCurrentWeather(for: cityName) { [weak self] response in
-            guard let self = self else { return }
+            
             if let response = response {
                 let city = WeatherCity(with: response)
-                if let items = self.weather, !items.contains(city) {
-                    self.weather?.insert(city, at: 0)
+                if let items = self?.weather.value, !items.contains(city) {
+                    self?.weather.value?.insert(city, at: 0)
                 }
                 print(city)
             }

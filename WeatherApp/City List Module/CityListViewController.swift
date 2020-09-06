@@ -13,7 +13,7 @@ class CityListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var spinner: UIActivityIndicatorView!
     
-    private var presenter: CityListPresenter?
+    private var presenter = CityListPresenter()
     private let locationService = GeolocationService()
     
     final let headerSections = ["Current", "Сities"]
@@ -23,6 +23,8 @@ class CityListViewController: UIViewController {
             tableView.reloadData()
         }
     }
+    
+    var selectedCity = WeatherCity()
     
     private enum Color {
         static let lightBlue = "E1F5FE"
@@ -40,15 +42,16 @@ class CityListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = CityListPresenter()
+        //MARK: Location
+        locationService.start()
         
+        //MARK: Work with UI
+        updateUI()
         tableView.delegate = self
         tableView.dataSource = self
         settingNavigationBar()
         spinner.settingView(backColor: UIColor(named: Color.lightBlue)!,
                             spinnerColor: UIColor(named: Color.customBlue)!)
-        //MARK: Location
-        locationService.start()
     }
     
     @IBAction func addCityButton(_ sender: Any) {
@@ -66,7 +69,7 @@ class CityListViewController: UIViewController {
             if let textFields = alert.textFields,
                 let textField = textFields.first,
                 let text = textField.text {
-                self?.presenter?.getData(for: text, completion: { (success) in
+                self?.presenter.getData(for: text, completion: { (success) in
                     if !success && !text.isEmpty {
                         self?.printErrorSearch()
                     }
@@ -91,6 +94,12 @@ class CityListViewController: UIViewController {
     private func settingNavigationBar() {
         navigationController?.navigationBar.tintColor = UIColor(named: Color.customBlue)
         navigationController?.navigationBar.backItem?.backBarButtonItem?.tintColor = UIColor(named: Color.customBlue)
+    }
+    
+    private func updateUI() {
+        presenter.weather.addListener { [weak self] _ in
+            self?.tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
+        }
     }
 }
 
@@ -125,10 +134,11 @@ extension CityListViewController: UITableViewDelegate, UITableViewDataSource {
             cell.setGradient(firstColor: UIColor(named: Color.customBlue) ?? UIColor.gray,
                              secondColor: UIColor(named: Color.lightBlue) ?? UIColor.white)
         case 1:
-            let items = cityArray[indexPath.row]
-            cell.configure(name: items, temp: 21)
-            cell.setTextColor(color: .black)
-            cell.setGradient() 
+            if let items = presenter.weather.value?[indexPath.row] {
+                cell.configure(name: items.name, temp: items.currentWeather?.temperature.value)
+                cell.setTextColor(color: .black)
+                cell.setGradient()
+            }
         default:
             fatalError("NoCell")
         }
@@ -139,7 +149,7 @@ extension CityListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return 1 //use one cell for current geolocaton
-        case 1: return cityArray.count
+        case 1: return presenter.weather.value?.count ?? 0
         default:
             fatalError("NoRows")
         }
@@ -147,7 +157,16 @@ extension CityListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        if let city = presenter.weather.value?[indexPath.row] {
+            selectedCity = city
+        }
         performSegue(withIdentifier: "ForecastViewController", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "ForecastViewController" else { return }
+        guard let destination = segue.destination as? ForecastViewController else { return }
+        destination.cityName = selectedCity
     }
     
     //MARK: Delete Cell

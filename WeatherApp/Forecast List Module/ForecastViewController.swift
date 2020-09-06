@@ -13,6 +13,8 @@ class ForecastViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var tableView: UITableView!
     
+    var cityName: WeatherCity?
+    
     private var presenter: ForecastPresenter?
     
     private enum Color {
@@ -35,7 +37,7 @@ class ForecastViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         let navigationBar = self.navigationController?.navigationBar
-        navigationBar?.topItem?.title = "Nizhny Novgorod" //test
+        navigationBar?.topItem?.title = cityName?.name //test
     }
 }
 

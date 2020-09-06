@@ -14,7 +14,7 @@ class CityTableViewCell: UITableViewCell {
     @IBOutlet private weak var tempLabel: UILabel!
     
     //TODO: update parameter temperature, convert from json to int type and output value as string
-    func configure(name: String, temp: Int?) {
+    func configure(name: String?, temp: Int?) {
         cityLabel.text = name
         tempLabel.text = "\(temp ?? 0)" + " °C"
     }

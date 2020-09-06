@@ -10,18 +10,14 @@ import Foundation
 import RealmSwift
 
 class WeatherModel: Object {
-    let temperature = RealmOptional<Double>()
-    let pressure = RealmOptional<Int>()
-    let humidity = RealmOptional<Int>()
+    let temperature = RealmOptional<Int>()
     @objc dynamic var date: Date = Date()
     @objc dynamic var conditionName: String = ""
     @objc dynamic var conditionDescription: String = ""
 
     convenience init(with response: WeatherResponse) {
         self.init()
-        self.temperature.value = response.main.temp
-        self.pressure.value = response.main.pressure
-        self.humidity.value = response.main.humidity
+        self.temperature.value = Int(response.main.temp)
         //self.date = Date.dateFromString(string: response.date) ?? Date()
         self.conditionName = response.weather.first?.main ?? ""
         self.conditionDescription = response.weather.first?.description ?? ""
