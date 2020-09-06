@@ -16,7 +16,7 @@ class ForecastTableViewCell: UITableViewCell {
     
     func configure(date: String, maxTemp: String, minTemp: String) {
         dateLabel.text = date
-        maxTempLabel.text = maxTemp
-        minTempLabel.text = minTemp
+        maxTempLabel.text = maxTemp + "°"
+        minTempLabel.text = minTemp + "°"
     }
 }

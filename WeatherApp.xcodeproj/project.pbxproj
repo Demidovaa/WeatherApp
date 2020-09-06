@@ -17,6 +17,7 @@
 		8691DCC62502C329005DB208 /* ForecastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8691DCC52502C329005DB208 /* ForecastCollectionViewCell.swift */; };
 		8691DCC82502C653005DB208 /* ForecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8691DCC72502C653005DB208 /* ForecastTableViewCell.swift */; };
 		86B254A1250100D40080238E /* UIActivityIndicatorView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B254A0250100D40080238E /* UIActivityIndicatorView+Extension.swift */; };
+		86BC99E92504415F00D9258F /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BC99E82504415F00D9258F /* UIView+Extension.swift */; };
 		86CA1BBE24B515B100678529 /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA1BBD24B515B100678529 /* CityTableViewCell.swift */; };
 		86CA1BC024B51AC200678529 /* GeolocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA1BBF24B51AC200678529 /* GeolocationService.swift */; };
 		86CA1BC424B787AA00678529 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CA1BC324B787AA00678529 /* CoreLocation.framework */; };
@@ -44,6 +45,7 @@
 		8691DCC52502C329005DB208 /* ForecastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCollectionViewCell.swift; sourceTree = "<group>"; };
 		8691DCC72502C653005DB208 /* ForecastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastTableViewCell.swift; sourceTree = "<group>"; };
 		86B254A0250100D40080238E /* UIActivityIndicatorView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicatorView+Extension.swift"; sourceTree = "<group>"; };
+		86BC99E82504415F00D9258F /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		86CA1BBD24B515B100678529 /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
 		86CA1BBF24B51AC200678529 /* GeolocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeolocationService.swift; sourceTree = "<group>"; };
 		86CA1BC324B787AA00678529 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -87,6 +89,7 @@
 			children = (
 				8615CA4424FAEC3100531138 /* UITableViewCell+Extension.swift */,
 				86B254A0250100D40080238E /* UIActivityIndicatorView+Extension.swift */,
+				86BC99E82504415F00D9258F /* UIView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				863B47AD24DF56D600D594F7 /* ForecastPresenter.swift in Sources */,
 				8691DCC82502C653005DB208 /* ForecastTableViewCell.swift in Sources */,
 				86CFB8B224D0B980001BAD1C /* MoyaCacheablePlugin.swift in Sources */,
+				86BC99E92504415F00D9258F /* UIView+Extension.swift in Sources */,
 				86CFB8B024D0B96B001BAD1C /* MoyaCacheable.swift in Sources */,
 				8687B3B624BF5F160014324D /* WeatherModel.swift in Sources */,
 				86E11C3024B11A5500131DCD /* AppDelegate.swift in Sources */,

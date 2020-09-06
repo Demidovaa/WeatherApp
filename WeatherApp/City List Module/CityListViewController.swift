@@ -44,11 +44,11 @@ class CityListViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        settingNavigationBar()
         spinner.settingView(backColor: UIColor(named: Color.lightBlue)!,
                             spinnerColor: UIColor(named: Color.customBlue)!)
         //MARK: Location
         locationService.start()
-        
     }
     
     @IBAction func addCityButton(_ sender: Any) {
@@ -86,6 +86,11 @@ class CityListViewController: UIViewController {
         alert.addAction(UIAlertAction(title: AlertConstant.cancel,
                                       style: .cancel))
         present(alert, animated: true)
+    }
+    
+    private func settingNavigationBar() {
+        navigationController?.navigationBar.tintColor = UIColor(named: Color.customBlue)
+        navigationController?.navigationBar.backItem?.backBarButtonItem?.tintColor = UIColor(named: Color.customBlue)
     }
 }
 

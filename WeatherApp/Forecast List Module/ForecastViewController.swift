@@ -15,6 +15,11 @@ class ForecastViewController: UIViewController {
     
     private var presenter: ForecastPresenter?
     
+    private enum Color {
+        static let lightBlue = "E1F5FE"
+        static let customBlue = "039BE5"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = ForecastPresenter()
@@ -24,10 +29,17 @@ class ForecastViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        forecastView.layer.cornerRadius = 40
+        forecastView.settingView(corner: 40, color: UIColor(named: Color.customBlue)!)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        let navigationBar = self.navigationController?.navigationBar
+        navigationBar?.topItem?.title = "Nizhny Novgorod" //test
     }
 }
 
+//MARK: CollectionView
 extension ForecastViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10 //test
@@ -35,25 +47,26 @@ extension ForecastViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
-        withReuseIdentifier: "ForecastCollectionViewCell",
-        for: indexPath) as? ForecastCollectionViewCell else { return UICollectionViewCell() }
+            withReuseIdentifier: "ForecastCollectionViewCell",
+            for: indexPath) as? ForecastCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.configure(time: "9:41", temp: "21")
+        cell.configure(time: "9:41", temp: "21") //test
         return cell
     }
 }
 
+//MARK: TableView
 extension ForecastViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10 //test
+        return 7 //test
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
-        withIdentifier: "ForecastTableViewCell", for: indexPath)
-        as? ForecastTableViewCell else { return UITableViewCell() }
+            withIdentifier: "ForecastTableViewCell", for: indexPath)
+            as? ForecastTableViewCell else { return UITableViewCell() }
         
-        cell.configure(date: "Monday, 5", maxTemp: "+21", minTemp: "+9")
+        cell.configure(date: "Monday, 5", maxTemp: "+21", minTemp: "+9") //test
         
         return cell
     }
