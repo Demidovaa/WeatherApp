@@ -13,5 +13,8 @@ protocol ForecastPresenterProtocol {
 }
 
 class ForecastPresenter: ForecastPresenterProtocol {
+    private let networkService = NetworkService()
+    var weather: [WeatherCity]?
+    
     
 }

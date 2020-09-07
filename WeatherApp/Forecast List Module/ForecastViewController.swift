@@ -9,11 +9,13 @@
 import UIKit
 
 class ForecastViewController: UIViewController {
-    @IBOutlet private weak var forecastView: UIView!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var forecastView: UIView!
+    @IBOutlet private weak var conditionLabel: UILabel!
+    @IBOutlet private weak var tempLabel: UILabel!
     
-    var cityName: WeatherCity?
+    var weatherCity: WeatherCity?
     
     private var presenter: ForecastPresenter?
     
@@ -32,12 +34,19 @@ class ForecastViewController: UIViewController {
         collectionView.dataSource = self
         
         forecastView.settingView(corner: 40, color: UIColor(named: Color.customBlue)!)
+        
+        loadCurrentWeather()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         let navigationBar = self.navigationController?.navigationBar
-        navigationBar?.topItem?.title = cityName?.name //test
+        navigationBar?.topItem?.title = weatherCity?.name //test
+    }
+    
+    private func loadCurrentWeather() {
+        tempLabel.text = "+" + "\(weatherCity?.currentWeather?.temperature.value ?? 0)" + "°"
+        conditionLabel.text = weatherCity?.currentWeather?.conditionName
     }
 }
 
@@ -60,7 +69,7 @@ extension ForecastViewController: UICollectionViewDelegate, UICollectionViewData
 //MARK: TableView
 extension ForecastViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7 //test
+        return 6 //test
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -18,11 +18,6 @@ class CityListViewController: UIViewController {
     
     final let headerSections = ["Current", "Сities"]
     private var location = ["Nizhny Novgorod"]
-    private var cityArray = ["Nizhny Novgorod", "Moscow"] {
-        didSet {
-            tableView.reloadData()
-        }
-    }
     
     var selectedCity = WeatherCity()
     
@@ -166,7 +161,7 @@ extension CityListViewController: UITableViewDelegate, UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "ForecastViewController" else { return }
         guard let destination = segue.destination as? ForecastViewController else { return }
-        destination.cityName = selectedCity
+        destination.weatherCity = selectedCity
     }
     
     //MARK: Delete Cell
@@ -181,7 +176,7 @@ extension CityListViewController: UITableViewDelegate, UITableViewDataSource {
                 location.removeAll()
                 tableView.deleteRows(at: [indexPath], with: .automatic)
             } else if (indexPath.section) == 1  {
-                cityArray.remove(at: indexPath.row)
+                //cityArray.remove(at: indexPath.row)
             }
         }
     }
