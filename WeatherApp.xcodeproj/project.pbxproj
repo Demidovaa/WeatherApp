@@ -20,6 +20,7 @@
 		86BC99E92504415F00D9258F /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BC99E82504415F00D9258F /* UIView+Extension.swift */; };
 		86BC99EB2505581400D9258F /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BC99EA2505581400D9258F /* Property.swift */; };
 		86BC99ED2505584600D9258F /* Signal+Emitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BC99EC2505584600D9258F /* Signal+Emitter.swift */; };
+		86BC99EF2507C6E100D9258F /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BC99EE2507C6E000D9258F /* DatabaseService.swift */; };
 		86CA1BBE24B515B100678529 /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA1BBD24B515B100678529 /* CityTableViewCell.swift */; };
 		86CA1BC024B51AC200678529 /* GeolocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA1BBF24B51AC200678529 /* GeolocationService.swift */; };
 		86CA1BC424B787AA00678529 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CA1BC324B787AA00678529 /* CoreLocation.framework */; };
@@ -50,6 +51,7 @@
 		86BC99E82504415F00D9258F /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		86BC99EA2505581400D9258F /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
 		86BC99EC2505584600D9258F /* Signal+Emitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Signal+Emitter.swift"; sourceTree = "<group>"; };
+		86BC99EE2507C6E000D9258F /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		86CA1BBD24B515B100678529 /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
 		86CA1BBF24B51AC200678529 /* GeolocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeolocationService.swift; sourceTree = "<group>"; };
 		86CA1BC324B787AA00678529 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -124,6 +126,7 @@
 			children = (
 				86CA1BBF24B51AC200678529 /* GeolocationService.swift */,
 				861022A524F716F700950050 /* NetworkService.swift */,
+				86BC99EE2507C6E000D9258F /* DatabaseService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				8691DCC82502C653005DB208 /* ForecastTableViewCell.swift in Sources */,
 				86CFB8B224D0B980001BAD1C /* MoyaCacheablePlugin.swift in Sources */,
 				86BC99E92504415F00D9258F /* UIView+Extension.swift in Sources */,
+				86BC99EF2507C6E100D9258F /* DatabaseService.swift in Sources */,
 				86CFB8B024D0B96B001BAD1C /* MoyaCacheable.swift in Sources */,
 				8687B3B624BF5F160014324D /* WeatherModel.swift in Sources */,
 				86E11C3024B11A5500131DCD /* AppDelegate.swift in Sources */,
