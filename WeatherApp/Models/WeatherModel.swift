@@ -11,6 +11,10 @@ import RealmSwift
 
 class WeatherModel: Object {
     let temperature = RealmOptional<Int>()
+    let feels = RealmOptional<Int>()
+    let minTemp = RealmOptional<Int>()
+    let maxTemp = RealmOptional<Int>()
+    let timezone = RealmOptional<Int>()
     @objc dynamic var date: Date = Date()
     @objc dynamic var conditionName: String = ""
     @objc dynamic var conditionDescription: String = ""
@@ -18,6 +22,10 @@ class WeatherModel: Object {
     convenience init(with response: WeatherResponse) {
         self.init()
         self.temperature.value = Int(response.main.temp)
+        self.feels.value = Int(response.main.feels)
+        self.minTemp.value = Int(response.main.minTemp)
+        self.maxTemp.value = Int(response.main.maxTemp)
+        self.timezone.value = response.timezone
         //self.date = Date.dateFromString(string: response.date) ?? Date()
         self.conditionName = response.weather.first?.main ?? ""
         self.conditionDescription = response.weather.first?.description ?? ""

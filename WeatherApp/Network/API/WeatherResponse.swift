@@ -13,12 +13,14 @@ struct WeatherResponse: Codable {
     let date: String?
     let main: WeatherData
     let weather: [WeatherStatus]
+    let timezone: Int?
     
     enum CodingKeys: String, CodingKey {
         case name
         case date = "dt_txt"
         case main
         case weather
+        case timezone
     }
 }
 
@@ -38,8 +40,16 @@ struct ForecastResponse: Codable {
 
 struct WeatherData: Codable {
     let temp: Double
-    let pressure: Int
-    let humidity: Int
+    let minTemp: Double
+    let maxTemp: Double
+    let feels: Double
+  
+    enum CodingKeys: String, CodingKey {
+        case temp
+        case minTemp = "temp_min"
+        case maxTemp = "temp_max"
+        case feels = "feels_like"
+    }
 }
 
 struct WeatherStatus: Codable {
