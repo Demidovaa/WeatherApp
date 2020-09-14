@@ -4,15 +4,15 @@ PODS:
     - Moya/Core (= 14.0.0)
   - Moya/Core (14.0.0):
     - Alamofire (~> 5.0)
-  - Realm (5.3.3):
-    - Realm/Headers (= 5.3.3)
-  - Realm/Headers (5.3.3)
-  - RealmSwift (5.3.3):
-    - Realm (= 5.3.3)
+  - Realm (5.4.0):
+    - Realm/Headers (= 5.4.0)
+  - Realm/Headers (5.4.0)
+  - RealmSwift (5.4.0):
+    - Realm (= 5.4.0)
 
 DEPENDENCIES:
   - Moya
-  - RealmSwift
+  - RealmSwift (= 5.4.0)
 
 SPEC REPOS:
   trunk:
@@ -24,9 +24,9 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
-  Realm: 2d57ea355bf8ca2a0964d6bfb38d28d7ff2addf6
-  RealmSwift: 0a709536ecea30eea1d3c514f6ade2ed078dee3c
+  Realm: 8949757d76e2451a53d727954c607e49c2542b77
+  RealmSwift: 0b7d7121e842724188123c6086831ae6d2952050
 
-PODFILE CHECKSUM: 45203905018a7e50130c79fa6e4b3d47161c3593
+PODFILE CHECKSUM: 0caed94730fceeaf0713b52ba4274dbc919e2343
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0.beta.2
