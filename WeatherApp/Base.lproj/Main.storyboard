@@ -53,9 +53,11 @@
                                                 <constraint firstItem="i9I-wh-far" firstAttribute="bottom" secondItem="aNV-6B-FEs" secondAttribute="bottomMargin" id="PVp-zO-v0C"/>
                                                 <constraint firstItem="Yo7-wQ-KmJ" firstAttribute="leading" secondItem="MHu-T8-e8f" secondAttribute="leading" id="Wif-OM-Xvw"/>
                                                 <constraint firstItem="MHu-T8-e8f" firstAttribute="top" secondItem="aNV-6B-FEs" secondAttribute="topMargin" constant="9" id="Xgq-WO-35V"/>
+                                                <constraint firstItem="i9I-wh-far" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MHu-T8-e8f" secondAttribute="trailing" constant="8" symbolic="YES" id="fms-E0-nAz"/>
                                                 <constraint firstItem="Yo7-wQ-KmJ" firstAttribute="leading" secondItem="aNV-6B-FEs" secondAttribute="leadingMargin" id="qT3-Kw-YVb"/>
                                                 <constraint firstItem="i9I-wh-far" firstAttribute="trailing" secondItem="aNV-6B-FEs" secondAttribute="trailingMargin" id="rBW-5O-mk9"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Yo7-wQ-KmJ" secondAttribute="bottom" constant="5.5" id="se8-RC-Dj5"/>
+                                                <constraint firstItem="i9I-wh-far" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Yo7-wQ-KmJ" secondAttribute="trailing" constant="8" symbolic="YES" id="uvq-dW-W8w"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
