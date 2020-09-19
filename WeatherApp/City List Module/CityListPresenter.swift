@@ -15,6 +15,10 @@ protocol CityListPresenterProtocol {
 
 class CityListPresenter: CityListPresenterProtocol {
     private let networkService = NetworkService()
+    private var databaseService = DatabaseService()
+    
+    final let initialСity = ["Moscow, Nizhny Novgorod"]
+    
     var weather = Property<[WeatherCity]?>([])
     
     func getData(for cityName: String, completion: ((_ success: Bool) -> ())?) {
@@ -22,6 +26,7 @@ class CityListPresenter: CityListPresenterProtocol {
             
             if let response = response {
                 let city = WeatherCity(with: response)
+                self?.databaseService.save(object: city)
                 if let items = self?.weather.value, !items.contains(city) {
                     self?.weather.value?.insert(city, at: 0)
                 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import RealmSwift
 
 class CityListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
@@ -62,14 +63,17 @@ class CityListViewController: UIViewController {
         
         alert.addAction(UIAlertAction(title: AlertConstant.search, style: .default, handler: { [weak self, alert] _ in
             if let textFields = alert.textFields,
-                let textField = textFields.first,
-                let text = textField.text {
+               let textField = textFields.first,
+               let text = textField.text {
                 self?.presenter.getData(for: text, completion: { (success) in
                     if !success && !text.isEmpty {
                         self?.printErrorSearch()
                     }
                 })
             }
+            self?.spinner.stopAnimating()
+        }))
+        alert.addAction(UIAlertAction(title: AlertConstant.cancel, style: .default, handler: { [weak self] _ in
             self?.spinner.stopAnimating()
         }))
         present(alert, animated: true)
@@ -118,19 +122,27 @@ extension CityListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: "CityTableViewCell", for: indexPath)
-            as? CityTableViewCell else { return UITableViewCell() }
+                withIdentifier: "CityTableViewCell", for: indexPath)
+                as? CityTableViewCell else { return UITableViewCell() }
         
         switch (indexPath.section) {
         case 0:
-            let item = location[indexPath.row]
-            cell.configure(name: item, temp: 20)
-            cell.setTextColor(color: .white)
-            cell.setGradient(firstColor: UIColor(named: Color.customBlue) ?? UIColor.gray,
-                             secondColor: UIColor(named: Color.lightBlue) ?? UIColor.white)
+            //test version
+            presenter.getData(for: location[0]) { (success) in
+                if let item = self.presenter.weather.value?[indexPath.row] {
+                    cell.configure(time: item.currentWeather?.date.time,
+                                   name: item.name,
+                                   temp: item.currentWeather?.temp.value)
+                    cell.setTextColor(color: .white)
+                    cell.setGradient(firstColor: UIColor(named: Color.customBlue) ?? UIColor.gray,
+                                     secondColor: UIColor(named: Color.lightBlue) ?? UIColor.white)
+                }
+            }
         case 1:
             if let items = presenter.weather.value?[indexPath.row] {
-                cell.configure(name: items.name, temp: items.currentWeather?.temperature.value)
+                cell.configure(time: items.currentWeather?.date.time,
+                               name: items.name,
+                               temp: items.currentWeather?.temp.value)
                 cell.setTextColor(color: .black)
                 cell.setGradient()
             }
