@@ -16,10 +16,10 @@ class WeatherModel: Object {
     let minTemp = RealmOptional<Int>()
     let maxTemp = RealmOptional<Int>()
     
+    let unixTime = RealmOptional<Int>()
     let timezone = RealmOptional<Int>()
-    @objc dynamic var date: Date = Date()
     @objc dynamic var conditionName: String?
-
+    
     convenience init(with response: WeatherResponse) {
         self.init()
         self.temp.value = Int(response.main.temp)
@@ -27,14 +27,14 @@ class WeatherModel: Object {
         self.minTemp.value = Int(response.main.minTemp)
         self.maxTemp.value = Int(response.main.maxTemp)
         
-        self.timezone.value = Int(response.timezone ?? 0)/3600
-        self.date = Date.dateFromString(string: response.date) ?? Date()
+        self.unixTime.value = Int(response.date ?? 0)
+        self.timezone.value = Int(response.timezone ?? 0)
         self.conditionName = response.weather.first?.main ?? ""
     }
 }
 
 class WeatherCity: Object {
-    @objc dynamic var name: String = ""
+    @objc dynamic var name: String?
     @objc dynamic var currentWeather: WeatherModel?
     dynamic var forecast = List<WeatherModel>()
     
