@@ -42,12 +42,15 @@ class ForecastViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         let navigationBar = self.navigationController?.navigationBar
-        navigationBar?.topItem?.title = weatherCity?.name //test
+        navigationBar?.topItem?.title = weatherCity?.name
     }
     
     private func loadCurrentWeather() {
-        dateLabel.text = weatherCity?.currentWeather?.date.shortDate
-        tempLabel.text = "+" + "\(weatherCity?.currentWeather?.temp.value ?? 0)" + "°"
+        dateLabel.text = ConvertDate.timeFromUnix(unixTime: weatherCity?.currentWeather?.unixTime.value,
+                                                  timezone: weatherCity?.currentWeather?.timezone.value,
+                                                  format: "d MMMM")
+        guard let temp = weatherCity?.currentWeather?.temp.value else { return }
+        tempLabel.text = DisplayTemperature.convertTempToString(temp: temp)
         conditionLabel.text = weatherCity?.currentWeather?.conditionName
     }
 }
@@ -60,8 +63,8 @@ extension ForecastViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: "ForecastCollectionViewCell",
-            for: indexPath) as? ForecastCollectionViewCell else { return UICollectionViewCell() }
+                withReuseIdentifier: "ForecastCollectionViewCell",
+                for: indexPath) as? ForecastCollectionViewCell else { return UICollectionViewCell() }
         
         cell.configure(time: "1am", temp: "21°C") //test
         return cell
@@ -76,8 +79,8 @@ extension ForecastViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: "ForecastTableViewCell", for: indexPath)
-            as? ForecastTableViewCell else { return UITableViewCell() }
+                withIdentifier: "ForecastTableViewCell", for: indexPath)
+                as? ForecastTableViewCell else { return UITableViewCell() }
         
         cell.configure(date: "Monday, 5", maxTemp: "+21", minTemp: "+9") //test
         

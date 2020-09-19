@@ -13,11 +13,11 @@ class CityTableViewCell: UITableViewCell {
     @IBOutlet private weak var cityLabel: UILabel!
     @IBOutlet private weak var tempLabel: UILabel!
     
-    //TODO: update parameter temperature, convert from json to int type and output value as string
-    func configure(time: String?, name: String?, temp: Int?) {
+    func configure(unixTime: Int?, timezone: Int?, name: String?, temp: Int?) {
+        let time = ConvertDate.timeFromUnix(unixTime: unixTime, timezone: timezone, format: "HH:mm")
         timeLabel.text = time
         cityLabel.text = name
-        tempLabel.text = "\(temp ?? 0)" + " °C"
+        tempLabel.text = DisplayTemperature.convertTempToString(temp: temp ?? 0)
     }
     
     func setTextColor(color: UIColor) {

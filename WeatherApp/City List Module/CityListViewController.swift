@@ -130,7 +130,8 @@ extension CityListViewController: UITableViewDelegate, UITableViewDataSource {
             //test version
             presenter.getData(for: location[0]) { (success) in
                 if let item = self.presenter.weather.value?[indexPath.row] {
-                    cell.configure(time: item.currentWeather?.date.time,
+                    cell.configure(unixTime: item.currentWeather?.unixTime.value,
+                                   timezone: item.currentWeather?.timezone.value,
                                    name: item.name,
                                    temp: item.currentWeather?.temp.value)
                     cell.setTextColor(color: .white)
@@ -140,7 +141,8 @@ extension CityListViewController: UITableViewDelegate, UITableViewDataSource {
             }
         case 1:
             if let items = presenter.weather.value?[indexPath.row] {
-                cell.configure(time: items.currentWeather?.date.time,
+                cell.configure(unixTime: items.currentWeather?.unixTime.value,
+                               timezone: items.currentWeather?.timezone.value,
                                name: items.name,
                                temp: items.currentWeather?.temp.value)
                 cell.setTextColor(color: .black)
