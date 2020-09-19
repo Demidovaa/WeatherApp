@@ -14,6 +14,7 @@ class ForecastViewController: UIViewController {
     @IBOutlet private weak var forecastView: UIView!
     @IBOutlet private weak var conditionLabel: UILabel!
     @IBOutlet private weak var tempLabel: UILabel!
+    @IBOutlet private weak var dateLabel: UILabel!
     
     var weatherCity: WeatherCity?
     
@@ -45,7 +46,8 @@ class ForecastViewController: UIViewController {
     }
     
     private func loadCurrentWeather() {
-        tempLabel.text = "+" + "\(weatherCity?.currentWeather?.temperature.value ?? 0)" + "°"
+        dateLabel.text = weatherCity?.currentWeather?.date.shortDate
+        tempLabel.text = "+" + "\(weatherCity?.currentWeather?.temp.value ?? 0)" + "°"
         conditionLabel.text = weatherCity?.currentWeather?.conditionName
     }
 }
@@ -53,7 +55,7 @@ class ForecastViewController: UIViewController {
 //MARK: CollectionView
 extension ForecastViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10 //test
+        return 24 //test
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -61,7 +63,7 @@ extension ForecastViewController: UICollectionViewDelegate, UICollectionViewData
             withReuseIdentifier: "ForecastCollectionViewCell",
             for: indexPath) as? ForecastCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.configure(time: "9:41", temp: "21") //test
+        cell.configure(time: "1am", temp: "21°C") //test
         return cell
     }
 }
