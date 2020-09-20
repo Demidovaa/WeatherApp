@@ -9,6 +9,7 @@
 import Foundation
 import Moya
 
+typealias LocationWeatherResponse = (WeatherResponse?) -> (Void)
 typealias CurrentWeatherResponse = (WeatherResponse?) -> (Void)
 typealias ForecastWeatherResponse = (ForecastResponse?) -> (Void)
 
@@ -39,5 +40,17 @@ class NetworkService {
         }
     }
     
-//TODO: implement (generic) a funс to eliminate duplicate code getCurrentWeather & getForecastWeather
+    func getLocationWeather(lat: Double, lon: Double, completion: @escaping LocationWeatherResponse) {
+        apiProvider.request(.loadingLocationWeather(lat, lon)) { result in
+            switch result {
+            case .success(let response):
+                let data = try? JSONDecoder().decode(WeatherResponse.self, from: response.data)
+                completion(data)
+            case .failure:
+                completion(nil)
+            }
+        }
+    }
+    
+//TODO: implement (generic) a funс to eliminate duplicate code getCurrentWeather & getForecastWeather & getLocationWeather
 }

@@ -10,7 +10,10 @@ import CoreLocation
 
 class GeolocationService: NSObject, CLLocationManagerDelegate {
     private let locationManager = CLLocationManager()
-    var coords: CLLocationCoordinate2D = CLLocationCoordinate2D()
+    private var coords: CLLocationCoordinate2D = CLLocationCoordinate2D()
+    var getCoords: CLLocationCoordinate2D {
+            return coords
+    }
     
     override init() {
         super.init()

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreLocation
 import RealmSwift
 
 class CityListViewController: UIViewController {
@@ -15,10 +14,9 @@ class CityListViewController: UIViewController {
     @IBOutlet private weak var spinner: UIActivityIndicatorView!
     
     private var presenter = CityListPresenter()
-    private let locationService = GeolocationService()
     
     final let headerSections = ["Current", "Сities"]
-    private var location = ["Nizhny Novgorod"]
+    private var location = ["Nizhny Novgorod"]    
     
     var selectedCity = WeatherCity()
     
@@ -38,9 +36,6 @@ class CityListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //MARK: Location
-        locationService.start()
-        
         //MARK: Work with UI
         updateUI()
         tableView.delegate = self
@@ -48,6 +43,11 @@ class CityListViewController: UIViewController {
         settingNavigationBar()
         spinner.settingView(backColor: UIColor(named: Color.lightBlue)!,
                             spinnerColor: UIColor(named: Color.customBlue)!)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        presenter.startGPS()
     }
     
     @IBAction func addCityButton(_ sender: Any) {
@@ -127,8 +127,7 @@ extension CityListViewController: UITableViewDelegate, UITableViewDataSource {
         
         switch (indexPath.section) {
         case 0:
-            //test version
-            presenter.getData(for: location[0]) { (success) in
+            presenter.getDataLocation { (success) in
                 if let item = self.presenter.weather.value?[indexPath.row] {
                     cell.configure(unixTime: item.currentWeather?.unixTime.value,
                                    timezone: item.currentWeather?.timezone.value,

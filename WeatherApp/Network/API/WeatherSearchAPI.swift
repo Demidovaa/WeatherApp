@@ -11,10 +11,9 @@ import Foundation
 import Moya
 
 enum WeatherSearchAPI {
+    case loadingLocationWeather(_ lat: Double,_ lon: Double)
     case loadingCurrentWeather(String)
     case loadingForecast(String)
-//    case locationLatitude(String)
-//    case locationlongitude(Strong)
 }
 
 extension WeatherSearchAPI: TargetType {
@@ -29,6 +28,7 @@ extension WeatherSearchAPI: TargetType {
     
     var path: String {
         switch self {
+        case .loadingLocationWeather: return "weather"
         case .loadingCurrentWeather: return "weather"
         case .loadingForecast: return "forecast"
         }
@@ -47,6 +47,12 @@ extension WeatherSearchAPI: TargetType {
         case .loadingCurrentWeather(let string),
              .loadingForecast(let string):
             return .requestParameters(parameters: ["q": string,
+                                                   "appid": Constants.apiKey,
+                                                   "units" : "metric"],
+                                      encoding: URLEncoding.default)
+        case .loadingLocationWeather(let lat, let lon):
+            return .requestParameters(parameters: ["lat": lat,
+                                                   "lon": lon,
                                                    "appid": Constants.apiKey,
                                                    "units" : "metric"],
                                       encoding: URLEncoding.default)
