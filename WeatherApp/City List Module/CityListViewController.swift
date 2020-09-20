@@ -13,11 +13,8 @@ class CityListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var spinner: UIActivityIndicatorView!
     
-    private var presenter = CityListPresenter()
-    
     final let headerSections = ["Current", "Сities"]
-    private var location = ["Nizhny Novgorod"]    
-    
+    private var presenter = CityListPresenter()
     var selectedCity = WeatherCity()
     
     private enum Color {
@@ -36,6 +33,7 @@ class CityListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter.loadingData()
         //MARK: Work with UI
         updateUI()
         tableView.delegate = self
@@ -44,12 +42,7 @@ class CityListViewController: UIViewController {
         spinner.settingView(backColor: UIColor(named: Color.lightBlue)!,
                             spinnerColor: UIColor(named: Color.customBlue)!)
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        presenter.startGPS()
-    }
-    
+        
     @IBAction func addCityButton(_ sender: Any) {
         spinner.startAnimating()
         let alert = UIAlertController(title: AlertConstant.addCity,
@@ -65,7 +58,7 @@ class CityListViewController: UIViewController {
             if let textFields = alert.textFields,
                let textField = textFields.first,
                let text = textField.text {
-                self?.presenter.getData(for: text, completion: { (success) in
+                self?.presenter.getDataWeather(for: text, completion: { (success) in
                     if !success && !text.isEmpty {
                         self?.printErrorSearch()
                     }
@@ -179,17 +172,18 @@ extension CityListViewController: UITableViewDelegate, UITableViewDataSource {
     
     //MARK: Delete Cell
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        true
+        if indexPath.section == 0 {
+           return false
+        } else {
+            return true
+        }
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
                    forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            if (indexPath.section) == 0 {
-                location.removeAll()
-                tableView.deleteRows(at: [indexPath], with: .automatic)
-            } else if (indexPath.section) == 1  {
-                //cityArray.remove(at: indexPath.row)
+            if (indexPath.section) == 1  {
+                self.presenter.removeCity(index: indexPath.row)
             }
         }
     }
