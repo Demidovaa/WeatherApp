@@ -15,10 +15,10 @@ class WeatherModel: Object {
     let feels = RealmOptional<Int>()
     let minTemp = RealmOptional<Int>()
     let maxTemp = RealmOptional<Int>()
-    
     let unixTime = RealmOptional<Int>()
     let timezone = RealmOptional<Int>()
     @objc dynamic var conditionName: String?
+    @objc dynamic var dateWeek: Date = Date()
     
     convenience init(with response: WeatherResponse) {
         self.init()
@@ -26,10 +26,10 @@ class WeatherModel: Object {
         self.feels.value = Int(response.main.feels)
         self.minTemp.value = Int(response.main.minTemp)
         self.maxTemp.value = Int(response.main.maxTemp)
-        
         self.unixTime.value = Int(response.date ?? 0)
         self.timezone.value = Int(response.timezone ?? 0)
         self.conditionName = response.weather.first?.main ?? ""
+        self.dateWeek = Date.dateFromString(string: response.dateWeek) ?? Date()
     }
 }
 
