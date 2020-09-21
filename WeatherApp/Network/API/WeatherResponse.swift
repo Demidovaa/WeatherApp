@@ -15,6 +15,7 @@ struct WeatherResponse: Codable {
     let main: WeatherData
     let weather: [WeatherStatus]
     let dateWeek: String?
+    let visibility: Double
     
     enum CodingKeys: String, CodingKey {
         case date = "dt"
@@ -23,6 +24,7 @@ struct WeatherResponse: Codable {
         case main
         case weather
         case dateWeek = "dt_txt"
+        case visibility
     }
 }
 
@@ -45,16 +47,20 @@ struct WeatherData: Codable {
     let feels: Double
     let minTemp: Double
     let maxTemp: Double
+    let pressure: Double
+    let humidity: Double
     
     enum CodingKeys: String, CodingKey {
         case temp
         case feels = "feels_like"
         case minTemp = "temp_min"
         case maxTemp = "temp_max"
+        case pressure
+        case humidity
     }
 }
 
 struct WeatherStatus: Codable {
     let main: String
+    let description: String
 }
-

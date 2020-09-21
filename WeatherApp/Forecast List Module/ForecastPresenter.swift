@@ -9,12 +9,14 @@
 import Foundation
 
 protocol ForecastPresenterProtocol {
-    
+    func getDetailName()-> [String]
 }
 
 class ForecastPresenter: ForecastPresenterProtocol {
     private let networkService = NetworkService()
-    var weather: [WeatherCity]?
+    private let detail = ["Description","Feels like","Temp min","Temp max","Visibility","Pressure","Humidity"]
     
-    
+    func getDetailName() -> [String] {
+        return detail
+    }
 }

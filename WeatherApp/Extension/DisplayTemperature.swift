@@ -14,6 +14,6 @@ class DisplayTemperature {
         if temp > 0 {
             mark = "+"
         }
-        return mark + "\(temp)" + "°C"
+        return mark + "\(temp)" + "°"
     }
 }

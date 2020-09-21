@@ -9,14 +9,12 @@
 import UIKit
 
 class ForecastTableViewCell: UITableViewCell {
-    @IBOutlet private weak var dateLabel: UILabel!
-    @IBOutlet private weak var weatherImage: UIImageView!
-    @IBOutlet private weak var maxTempLabel: UILabel!
-    @IBOutlet private weak var minTempLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var dataLabel: UILabel!
+    @IBOutlet weak var aеtributеImage: UIImageView!
     
-    func configure(date: String, maxTemp: String, minTemp: String) {
-        dateLabel.text = date
-        maxTempLabel.text = maxTemp + "°"
-        minTempLabel.text = minTemp + "°"
+    func configure(description: String, data: String) {
+        descriptionLabel.text = description
+        dataLabel.text = data
     }
 }

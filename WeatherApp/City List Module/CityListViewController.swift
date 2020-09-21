@@ -16,7 +16,7 @@ class CityListViewController: UIViewController {
     final let headerSections = ["Current", "Сities"]
     private var presenter = CityListPresenter()
     var selectedCity = WeatherCity()
-    
+ 
     private enum Color {
         static let lightBlue = "E1F5FE"
         static let customBlue = "039BE5"
